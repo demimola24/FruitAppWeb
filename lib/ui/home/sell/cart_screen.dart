@@ -5,7 +5,7 @@ import 'package:fruitshopweb/ui/home/sell/sell_screen.dart';
 import 'package:fruitshopweb/ui/varialble_ext.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import '../../../../../constants/color_const.dart';
+import '../../../constants/color_const.dart';
 import '../../widget/custom_dialogs.dart';
 
 

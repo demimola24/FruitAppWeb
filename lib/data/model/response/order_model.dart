@@ -18,7 +18,11 @@ class OrderModel {
   OrderModel.fromJson(dynamic json) {
     id = json['id'];
     timestamp = json['timestamp'];
-    items = FruitList.fromJson(json['orders']);
+    if(json['items'] is Map){
+      items = FruitList.fromJson(json['items']["fruitList"]);
+    }else{
+      items = FruitList.fromJson(json['items']);
+    }
   }
   String? id;
   String? timestamp;

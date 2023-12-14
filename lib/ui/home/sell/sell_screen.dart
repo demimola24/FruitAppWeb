@@ -23,6 +23,7 @@ class _SellScreenState extends State<SellScreen> {
   void initState() {
     super.initState();
     SellScreen.homeBloc.getProducts();
+    SellScreen.homeBloc.init();
   }
 
 
@@ -33,34 +34,56 @@ class _SellScreenState extends State<SellScreen> {
 
     return Scaffold(
           backgroundColor:  ColorPath.OFF_WHITE,
-          body: Stack(
-            children: [
-              Container(
-                  width: width,
-                  alignment: Alignment.center,
-                  height: height,
-                  child:  ResponsiveBuilder(
-                      builder: (context, sizingInformation) {
-                        // if(sizingInformation.screenSize.width<900){
-                        //   return ProductsScreen();
-                        // }
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const SizedBox(width: 8,),
-                            Expanded(
-                                child: ProductsScreen(),
-                            ),
-                            const SizedBox(width: 8,),
-                            //CartScreen(),
-                          ],
-                        );
-                      }
-                  )
-              ),
-              customProgress(SellScreen.homeBloc.progressStatusStream)
-            ],
+          body: Container(
+            width: width,
+            height: height,
+            child: Stack(
+              children: [
+                Container(
+                    width: width,
+                    alignment: Alignment.center,
+                    height: height,
+                    child:  ResponsiveBuilder(
+                        builder: (context, sizingInformation) {
+                          if(sizingInformation.screenSize.width<900){
+                            return Column(
+                              children: [
+                                Container(
+                                  height: 230,
+                                  child: ProductsScreen(),
+                                ),
+                                const SizedBox(height: 8,),
+                                Expanded(child: CartScreen()),
+                              ],
+                            );
+                          }
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(width: 8,),
+                              Expanded(
+                                  child: ProductsScreen(),
+                              ),
+                              const SizedBox(width: 4,),
+                              Container(height: height,color: Colors.grey,width: 5,),
+                              Container(
+                                  width: 450,
+                                  child: CartScreen()
+                              ),
+                              const SizedBox(width: 8,),
+                            ],
+                          );
+                        }
+                    )
+                ),
+                Container(
+                    width: width,
+                    height: height,
+                    child: customProgress(SellScreen.homeBloc.progressStatusStream)
+                )
+              ],
+            ),
           ),
         );
   }

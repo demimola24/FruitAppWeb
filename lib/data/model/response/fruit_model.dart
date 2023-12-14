@@ -68,6 +68,13 @@ FruitModel copyWith({  String? name,
     return map;
   }
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          (other is FruitModel &&
+              other.id == this.id &&
+              other.name == this.name);
+
 }
 
 /// calories : 81

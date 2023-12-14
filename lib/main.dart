@@ -55,7 +55,7 @@ class _AppStateState extends State<AppState> {
       onUnknownRoute: (RouteSettings settings) {
         return MaterialPageRoute<void>(
           settings: settings,
-          builder: (BuildContext context) => LoginScreen(),
+          builder: (BuildContext context) => BaseHomeView(),
         );
       },
 
@@ -65,7 +65,7 @@ class _AppStateState extends State<AppState> {
   final Map<String, Widget Function(BuildContext)> _routes = {
     LoginScreen.routeName: (context) => LoginScreen(),
     RegisterScreen.routeName: (context) => RegisterScreen(),
-    BaseHomeView.routeName: (context) => BaseHomeView(),
+    BaseHomeView.routeName: (context) => const BaseHomeView(),
   };
 
 }

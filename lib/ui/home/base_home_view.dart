@@ -1,11 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:fruitshopweb/constants/imagepath.dart';
+import 'package:fruitshopweb/ui/home/orders/order_history_screen.dart';
 import 'package:fruitshopweb/ui/home/sell/sell_screen.dart';
+import 'package:fruitshopweb/ui/shared_prefs.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../constants/color_const.dart';
+import '../auth/login_screen.dart';
+import '../auth/onboarding_banner_screen.dart';
 
 
 class BaseHomeView extends StatefulWidget {
@@ -54,11 +58,27 @@ class _BaseHomeViewState extends State<BaseHomeView>  with SingleTickerProviderS
                                   color: ColorPath.BLACK,
                                 ),),
                               Expanded(child: SizedBox()),
-                              Icon(Icons.add_shopping_cart, color: Colors.grey,),
+                              InkWell(
+                                child: Icon(Icons.add_shopping_cart,color: Colors.grey,),
+                                onTap: (){
+                                  BaseHomeView.navigatorKey.currentState?.pushReplacementNamed(SellScreen.routeName);
+                                },
+                              ),
                               SizedBox(width: 16,),
-                              Icon(Icons.history,color: Colors.grey,),
+                              InkWell(
+                                  child: Icon(Icons.history,color: Colors.grey,),
+                                onTap: (){
+                                  BaseHomeView.navigatorKey.currentState?.pushReplacementNamed(OrderScreen.routeName);
+                                },
+                              ),
                               SizedBox(width: 16,),
-                              Icon(Icons.person,color: Colors.grey,),
+                              InkWell(
+                                child: Icon(Icons.logout,color: Colors.grey,),
+                                onTap: (){
+                                  MySharedPrefs.clearDetails();
+                                  Navigator.pushNamedAndRemoveUntil(context,LoginScreen.routeName,ModalRoute.withName('/'));
+                                },
+                              ),
                             ],
                           ),
                         ),
@@ -82,7 +102,7 @@ class _BaseHomeViewState extends State<BaseHomeView>  with SingleTickerProviderS
   @override
   void dispose() {
     super.dispose();
-    BaseHomeView.navigatorKey.currentState!.dispose();
+    BaseHomeView.navigatorKey.currentState?.dispose();
   }
 }
 
@@ -99,6 +119,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           settings: settings,
           builder: (context) => const SellScreen(),
+        );
+      case OrderScreen.routeName:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (context) =>  OrderScreen(),
         );
         //
       default:

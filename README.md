@@ -1,6 +1,6 @@
 # fruitshopweb
 
-# [a relative link](path%20with%20spaces/other_file.md)
+# [Demo Link](path%20with%20spaces/other_file.md)
 
 A Fruit Selling Demo Application.
 
@@ -13,7 +13,7 @@ A Fruit Selling Demo Application.
 - Unit and Widget Testing, etc,
   
 
-![alt text] (https://github.com/demimola24/FruitAppWeb/blob/main/app_image.png))
+![alt text](https://github.com/demimola24/FruitAppWeb/blob/main/app_image.png)
 
 
 For help getting started with Flutter development, view the

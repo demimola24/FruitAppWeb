@@ -1,6 +1,6 @@
 # fruitshopweb
 
-# [Demo Link](path%20with%20spaces/other_file.md)
+# [Live Demo Link](path%20with%20spaces/other_file.md)
 
 A Fruit Selling Demo Application.
 
@@ -11,6 +11,7 @@ A Fruit Selling Demo Application.
 - Api calls for Authentications and fetching fruits
 - Business logic seperation
 - Unit and Widget Testing, etc,
+- Deployment on Firebase hosting 
   
 
 ![alt text](https://github.com/demimola24/FruitAppWeb/blob/main/app_image.png)
